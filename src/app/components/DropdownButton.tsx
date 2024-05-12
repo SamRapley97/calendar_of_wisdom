@@ -1,14 +1,22 @@
-'use client'
+
 
 import React, { useState, useEffect, useRef } from 'react';
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 
-const Dropdown = () => {
+dayjs.extend(advancedFormat)
+
+
+const Dropdown = ({handleDateChange}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(null);
   const [selectedDay, setSelectedDay] = useState(null);
-  const [buttonText, setButtonText] = useState('Select Month');
+  const [buttonText, setButtonText] = useState(`${dayjs().format('MMMM')} ${dayjs().format('Do')}`);
   const dropdownRef = useRef(null);
+
+
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -38,8 +46,12 @@ const Dropdown = () => {
   const handleDaySelection = (day) => {
     setSelectedDay(day);
     setButtonText(`${selectedMonth} ${day}`);
+    handleDateChange(`${selectedMonth.toLowerCase()}_${day.toLowerCase()}`)
+
     setIsSubMenuOpen(false);
     setIsOpen(false);
+  
+
   };
 
   const generateDaysArray = () => {
@@ -63,7 +75,9 @@ const Dropdown = () => {
 
   const days = generateDaysArray();
 
+
   return (
+
     <div className="group inline-block" ref={dropdownRef}>
       <button className="dropdownBtn" onClick={handleToggle}>
         {buttonText}
@@ -83,3 +97,4 @@ const Dropdown = () => {
 };
 
 export default Dropdown;
+

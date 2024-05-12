@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+
 export const metadata: Metadata = {
   title: "Calendar of Wisdom",
   description: "Daily dose of wisdom curated by Tolstoy",

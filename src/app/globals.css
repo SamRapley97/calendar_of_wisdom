@@ -60,7 +60,7 @@ body {
 .dayPicker.open {
   display: flex; /* Show when open class is present */
   flex-direction: column;
-  max-height: 10rem;
+  max-height: 15rem;
   overflow-y: auto;
 }
 
@@ -78,7 +78,7 @@ body {
 .dayPicker.sub-menu.open {
   display: flex; /* Show when open class is present */
   flex-direction: column;
-  max-height: 10rem;
+  max-height: 15rem;
   overflow-y: auto;
 }
 
