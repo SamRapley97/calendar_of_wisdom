@@ -12,7 +12,7 @@ const ChangeTextContent = (selectedDate: string, setTextContent: (content: any) 
 
 
   // // Create an S3 object
-  const s3 = new AWS.S3();
+  const s3 = new AWS.S3( {signatureVersion: 'v4' });
 
   // Specify the parameters for retrieving the HTML file
   const params = {
