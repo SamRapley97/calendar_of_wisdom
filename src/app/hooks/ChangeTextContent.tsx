@@ -3,11 +3,11 @@ import ReactHtmlParser from 'html-react-parser';
 
 const ChangeTextContent = (selectedDate: string, setTextContent: (content: any) => void) => {
   // Configure AWS SDK
-  // AWS.config.update({
-  //   accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
-  //   secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
-  //   region: process.env.NEXT_PUBLIC_AWS_REGION,
-  // });
+  AWS.config.update({
+    accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+    region: process.env.NEXT_PUBLIC_AWS_REGION,
+  });
 
   // // Create an S3 object
   const s3 = new AWS.S3();
