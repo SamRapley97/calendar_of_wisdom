@@ -8,7 +8,6 @@ const Home = () => {
 
   return (
 
-    
     <main>
         <TextContent></TextContent>
     </main>

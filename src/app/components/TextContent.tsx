@@ -2,82 +2,68 @@
 
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Dropdown from '../components/DropdownButton';
-import AWS from 'aws-sdk';
-import ReactHtmlParser from 'html-react-parser';
+import ButtonGroup from './ButtonGroup';
+import ChangeTextContent from '../hooks/ChangeTextContent';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dotenv/config'
+import CustomParseFormat from 'dayjs/plugin/advancedFormat';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
-
-
-
-
-
-
-dayjs.extend(advancedFormat)
+dayjs.extend(advancedFormat, CustomParseFormat)
 
 
 
 const TextContent: React.FC = () => {
-  const [textContent, setTextContent] = useState<string>('');
-  const today = `${dayjs().format('MMMM').toLowerCase()}_${dayjs().format('Do').toLowerCase()}`
+  const [textContent, setTextContent] = useState<any>('');
+  const [dayText, setDayText] = useState<any>('');
+  const today = `${dayjs().format('MMMM_Do').toLowerCase()}`
 
-
-  const ChangeDate = (selectedDate: string) => {
 
   
-    
-    // useEffect(() => {
-      // Configure AWS SDK
-      AWS.config.update({
-        accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
-        region: process.env.NEXT_PUBLIC_AWS_REGION,
-      });
+  React.useEffect(() => {
+    ChangeTextContent(today, setTextContent);
+    setDayText(`${dayjs().format('MMMM Do')}`)
+  }, [today]);
 
-      console.log(process.env.NEXT_PUBLIC_AWS_REGION,)
+  
+  const handlePreviousNextDay = (dayChoice: string) => {
+    // Preprocess the input date string to remove the ordinal indicator
+    const removedOrdinalDate = dayText.replace(/\b(\d+)(st|nd|rd|th)\b/g, '$1');
 
-      // Create an S3 object
-      const s3 = new AWS.S3();
+    // Parse the preprocessed date string using the custom format
+    let parsedDate: any;
+    if (dayChoice === 'previousDay') {
+        parsedDate = dayjs(removedOrdinalDate, 'MMMM D', 'en').subtract(1, 'd');
+    } else if (dayChoice === 'nextDay') {
+        parsedDate = dayjs(removedOrdinalDate, 'MMMM D', 'en').add(1, 'd');
+    }
+
+    // Log the parsed date
+    setDayText(parsedDate.format('MMMM Do'));
+    ChangeTextContent(`${parsedDate.format('MMMM_Do').toLowerCase()}`, setTextContent);
+};
+
+  const handleDateChange = (selectedDate: string) => {
+        // Call ChangeTextContent function with the selected date and setTextContent
+    ChangeTextContent(selectedDate, setTextContent);
+    let formattedSelectedDate = selectedDate.charAt(0).toUpperCase()+ selectedDate.slice(1)
+    formattedSelectedDate = formattedSelectedDate.replace(/_/g, ' ')
+    setDayText(formattedSelectedDate)
+
   
-      // Specify the parameters for retrieving the HTML file
-      const params = {
-        Bucket: 'calendar-of-wisdom',
-        Key: selectedDate + '.html'
-      };
-  
-      // Read the HTML file from S3
-      s3.getObject(params, (err, data) => {
-        if (err) {
-          console.error('Error reading HTML file:', err);
-          setTextContent('')
-          return;
-        }
-  
-        // Update the date content with the HTML file content
-        setTextContent(ReactHtmlParser(data.Body?.toString()));
-      });
-    // }, []); // Empty dependency array to run the effect only once on component mount
   };
 
-
-  // React.useEffect(() => {
-  //   ChangeDate(today); // Example date
-  // }, [today]);
 
 
   return (
     <main>
-      <section className="buttonGroup">
-        <Link href="/about" passHref>
-          <button className="navButton">
-            About
-          </button>
-        </Link>
-        <Dropdown handleDateChange={ChangeDate} />
-      </section>
+      <ButtonGroup handleDateChange={handleDateChange}></ButtonGroup>
+      <div className="dayHeaderGroup">
+      <button onClick={() => handlePreviousNextDay('previousDay')}><FontAwesomeIcon icon={faChevronLeft} /></button>
+        <h1 className="dayHeaderText">{dayText}</h1>
+        <button onClick={() => handlePreviousNextDay('nextDay')}> <FontAwesomeIcon icon={faChevronRight} /></button>
+      </div>
       {textContent}
     </main>
   );

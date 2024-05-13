@@ -1,25 +1,26 @@
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 dayjs.extend(advancedFormat)
 
+interface DropdownProps {
+  handleDateChange: (selectedDate: string) => void;
+}
 
-const Dropdown = ({handleDateChange}) => {
+const Dropdown: React.FC<DropdownProps> = ({ handleDateChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-  const [selectedMonth, setSelectedMonth] = useState(null);
-  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedMonth, setSelectedMonth] = useState<any>(null)
+  const [selectedDay, setSelectedDay] = useState<any>(null);
   const [buttonText, setButtonText] = useState(`${dayjs().format('MMMM')} ${dayjs().format('Do')}`);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<any>()
 
 
 
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: any) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
         setIsSubMenuOpen(false);
@@ -38,16 +39,15 @@ const Dropdown = ({handleDateChange}) => {
     setIsSubMenuOpen(false);
   };
 
-  const handleSubMenuToggle = (month) => {
+  const handleSubMenuToggle = (month: any) => {
     setSelectedMonth(month);
     setIsSubMenuOpen(true);
   };
 
-  const handleDaySelection = (day) => {
+  const handleDaySelection = (day: any) => {
     setSelectedDay(day);
     setButtonText(`${selectedMonth} ${day}`);
     handleDateChange(`${selectedMonth.toLowerCase()}_${day.toLowerCase()}`)
-
     setIsSubMenuOpen(false);
     setIsOpen(false);
   
@@ -97,4 +97,3 @@ const Dropdown = ({handleDateChange}) => {
 };
 
 export default Dropdown;
-
