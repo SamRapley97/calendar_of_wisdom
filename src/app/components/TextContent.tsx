@@ -46,7 +46,7 @@ const TextContent: React.FC = () => {
 };
 
   const handleDateChange = (selectedDate: string) => {
-        // Call ChangeTextContent function with the selected date and setTextContent
+    // Call ChangeTextContent function with the selected date and setTextContent
     ChangeTextContent(selectedDate, setTextContent);
     let formattedSelectedDate = selectedDate.charAt(0).toUpperCase()+ selectedDate.slice(1)
     formattedSelectedDate = formattedSelectedDate.replace(/_/g, ' ')
