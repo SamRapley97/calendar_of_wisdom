@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-module.exports = {
+const nextConfig = {
     serverRuntimeConfig: {
         accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
@@ -14,6 +12,8 @@ module.exports = {
       region: process.env.NEXT_PUBLIC_AWS_REGION,
       staticFolder: '/static',
     },
-  }
+};
+
+
 
 export default nextConfig;
