@@ -19,7 +19,6 @@ const ChangeTextContent = (selectedDate: string, setTextContent: (content: any) 
     Bucket: 'calendar-of-wisdom',
     Key: selectedDate + '.html'
   };
-  };
 
   // Read the HTML file from S3
   s3.getObject(params, (err, data: any) => {
