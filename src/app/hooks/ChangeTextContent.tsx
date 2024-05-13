@@ -17,7 +17,8 @@ const ChangeTextContent = (selectedDate: string, setTextContent: (content: any) 
   // Specify the parameters for retrieving the HTML file
   const params = {
     Bucket: 'calendar-of-wisdom',
-    Key: `${selectedDate}.html`
+    Key: selectedDate} + '.html`
+    url
   };
   };
 
