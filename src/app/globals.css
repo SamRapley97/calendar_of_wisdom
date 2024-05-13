@@ -10,27 +10,24 @@
 }
 
 body {
-    text-align: center;
-    max-width: 100%;
+  text-align: center;
+  max-width: 100%;
 
 }
 
 .mainTitle {
-    font-size: 50px;
-    padding: 2%
+  font-size: clamp(50px, 2rem, 200px);
+  padding: 2%
 }
 
-.buttonGroup {
-    padding-bottom: 2rem; 
-}
 
 .navButton {
-    padding: 0.5rem;
-    margin: 1rem;
-    background-color: #f2f2f2;
-    border-radius: 0.25rem;
-    min-width: 8rem;
-    text-align: center;
+  padding: 0.5rem;
+  margin: 1rem;
+  background-color: #f2f2f2;
+  border-radius: 0.25rem;
+  min-width: 8rem;
+  text-align: center;
 
 }
 
@@ -83,12 +80,16 @@ body {
 }
 
 @media (max-width: 768px) {
+    .group {
+      position: relative; /* Ensure proper positioning */
+    }
   
     .dayPicker {
       padding: 1rem;
       width: 60%; 
       min-height: 40vh;
       top: calc(100%); /* Position below the button */
+      right: 10%;
       align-items: center;
       z-index: 10;
 
@@ -97,7 +98,7 @@ body {
     .dayPicker.sub-menu {
       top: calc(89%); /* Position below the button */
       width: 60%;
-      right: 20%;
+      right: 10%;
       z-index: 11;
       min-height: 40vh; /* Adjust the maximum height */
     }
@@ -106,22 +107,31 @@ body {
   
 
 .selected {
-    background-color: #f2f2f2; /* Light grey background */
+  background-color: #f2f2f2; /* Light grey background */
+}
+
+.dayHeaderGroup {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Center items horizontally */
 }
   
-
+.dayHeaderText {
+  font-size: clamp(40px, 2rem, 100px);
+  margin: 5%
+}
   
 .textContent {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: clamp(300px, 60%, 80%)
+  margin-left: auto;
+  margin-right: auto;
+  max-width: clamp(300px, 60%, 80%)
 }
 
 .quote {
-    padding-bottom: 2%;
+  padding-bottom: 2%;
 }
 
 .author {
-    font-weight: bold;
-    padding-bottom: 5%;
+  font-weight: bold;
+  padding-bottom: 5%;
 }

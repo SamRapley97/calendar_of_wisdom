@@ -17,6 +17,7 @@ interface ButtonGroupProps {
         </Link>
         <Dropdown handleDateChange={handleDateChange} />
       </section>
+      
     </main>
   );
 };
