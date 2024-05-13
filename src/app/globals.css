@@ -83,12 +83,6 @@ body {
 }
 
 @media (max-width: 768px) {
-    .group {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center items horizontally */
-      position: relative; /* Ensure proper positioning */
-    }
   
     .dayPicker {
       padding: 1rem;

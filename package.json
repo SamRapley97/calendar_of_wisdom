@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-html-parser": "^2.0.6",
     "aws-sdk": "^2.1618.0",
     "dayjs": "^1.11.11",
     "dotenv": "^16.4.5",
