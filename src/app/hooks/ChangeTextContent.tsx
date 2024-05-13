@@ -18,7 +18,6 @@ const ChangeTextContent = (selectedDate: string, setTextContent: (content: any) 
   const params = {
     Bucket: 'calendar-of-wisdom',
     Key: selectedDate + '.html`
-    url
   };
   };
 
