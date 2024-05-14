@@ -17,6 +17,7 @@ dayjs.extend(advancedFormat, CustomParseFormat)
 
 const TextContent: React.FC = () => {
   const [textContent, setTextContent] = useState<any>('');
+  const [buttonText, setButtonText] = useState<any>('');
   const [dayText, setDayText] = useState<any>('');
   const today = `${dayjs().format('MMMM_Do').toLowerCase()}`
 
@@ -25,6 +26,7 @@ const TextContent: React.FC = () => {
   React.useEffect(() => {
     ChangeTextContent(today, setTextContent);
     setDayText(`${dayjs().format('MMMM Do')}`)
+    setButtonText(`${dayjs().format('MMMM Do')}`)
   }, [today]);
 
   
@@ -43,6 +45,8 @@ const TextContent: React.FC = () => {
     // Log the parsed date
     setDayText(parsedDate.format('MMMM Do'));
     ChangeTextContent(`${parsedDate.format('MMMM_Do').toLowerCase()}`, setTextContent);
+    setButtonText(parsedDate.format('MMMM Do'))
+    
 };
 
   const handleDateChange = (selectedDate: string) => {
@@ -51,6 +55,7 @@ const TextContent: React.FC = () => {
     let formattedSelectedDate = selectedDate.charAt(0).toUpperCase()+ selectedDate.slice(1)
     formattedSelectedDate = formattedSelectedDate.replace(/_/g, ' ')
     setDayText(formattedSelectedDate)
+    setButtonText(formattedSelectedDate)
 
   
   };
@@ -59,7 +64,7 @@ const TextContent: React.FC = () => {
 
   return (
     <main>
-      <ButtonGroup handleDateChange={handleDateChange}></ButtonGroup>
+      <ButtonGroup handleDateChange={handleDateChange} buttonText={buttonText}></ButtonGroup>
       <div className="dayHeaderGroup">
       <button onClick={() => handlePreviousNextDay('previousDay')}><FontAwesomeIcon icon={faChevronLeft} /></button>
         <h1 className="dayHeaderText">{dayText}</h1>

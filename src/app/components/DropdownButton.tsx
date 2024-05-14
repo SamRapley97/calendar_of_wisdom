@@ -6,14 +6,14 @@ dayjs.extend(advancedFormat)
 
 interface DropdownProps {
   handleDateChange: (selectedDate: string) => void;
+  buttonText: string
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ handleDateChange }) => {
+const Dropdown: React.FC<DropdownProps> = ({ handleDateChange, buttonText }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState<any>(null)
-  const [selectedDay, setSelectedDay] = useState<any>(null);
-  const [buttonText, setButtonText] = useState(`${dayjs().format('MMMM')} ${dayjs().format('Do')}`);
+  const [selectedDay, setSelectedDay] = useState<any>(null);``
   const dropdownRef = useRef<any>()
 
 
@@ -46,7 +46,6 @@ const Dropdown: React.FC<DropdownProps> = ({ handleDateChange }) => {
 
   const handleDaySelection = (day: any) => {
     setSelectedDay(day);
-    setButtonText(`${selectedMonth} ${day}`);
     handleDateChange(`${selectedMonth.toLowerCase()}_${day.toLowerCase()}`)
     setIsSubMenuOpen(false);
     setIsOpen(false);
