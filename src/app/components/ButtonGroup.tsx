@@ -3,9 +3,10 @@ import Dropdown from './DropdownButton';
 
 interface ButtonGroupProps {
     handleDateChange: (selectedDate: string) => void;
+    buttonText: string
   }
 
-  const ButtonGroup: React.FC<ButtonGroupProps> = ({ handleDateChange }) => {
+  const ButtonGroup: React.FC<ButtonGroupProps> = ({ handleDateChange, buttonText }) => {
 
   return (
     <main>
@@ -15,7 +16,7 @@ interface ButtonGroupProps {
             About
           </button>
         </Link>
-        <Dropdown handleDateChange={handleDateChange} />
+        <Dropdown handleDateChange={handleDateChange} buttonText={buttonText} />
       </section>
       
     </main>
