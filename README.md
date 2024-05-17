@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Calendar of Wisdom
 
-## Getting Started
+This project was inspired by the 'Calendar of Wisdom' book from Russian author Lev Tolstoy. 
 
-First, run the development server:
+I have gained a lot of benefit from these daily entries of wisdom curated by Tolstoy, so I thought it would be a fun project to get an online version up and running as well. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The purpose of this project was also to improve my frontend web development skills. Prior to this project, I had never used React/NextJS. It has been a steep learning curve! 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I also enjoyed learning about various aspects of config/CI/CD for this project. The posts themselves are stored in an AmazonS3 bucket, so there was a lot to learn regarding how to fetch those. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The project is currently hosted on Amplify (url incoming!). 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Still under development, so lots of little bits to do:
 
-## Learn More
+- Posts have to be manually created, still in the process of doing this! 
+- Implement an about page. 
+- Fix typescript errors. I am currently bypassing these using the dreaded 'any'. 
+- Implement e2e tests, and configure them to run in GitHub Actions. 
 
-To learn more about Next.js, take a look at the following resources:
+Thanks for reading! 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

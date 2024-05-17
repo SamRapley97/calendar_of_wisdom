@@ -66,9 +66,9 @@ const TextContent: React.FC = () => {
     <main>
       <ButtonGroup handleDateChange={handleDateChange} buttonText={buttonText}></ButtonGroup>
       <div className="dayHeaderGroup">
-      <button onClick={() => handlePreviousNextDay('previousDay')}><FontAwesomeIcon icon={faChevronLeft} /></button>
+      <button className="leftButton" onClick={() => handlePreviousNextDay('previousDay')}> <FontAwesomeIcon icon={faChevronLeft} className='leftIcon' /></button>
         <h1 className="dayHeaderText">{dayText}</h1>
-        <button onClick={() => handlePreviousNextDay('nextDay')}> <FontAwesomeIcon icon={faChevronRight} /></button>
+      <button className="rightButton" onClick={() => handlePreviousNextDay('nextDay')}> <FontAwesomeIcon icon={faChevronRight} className='rightIcon' /></button>
       </div>
       {textContent}
     </main>
