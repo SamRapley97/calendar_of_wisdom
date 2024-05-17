@@ -117,18 +117,17 @@ body {
 }
 
 
-
 .dayHeaderGroup > .leftButton {
-  position: fixed;  /* Position the buttons fixed on the screen */
-  padding-right: 240px;
-  margin-right: 40px;
+  position: absolute;  /* Position the buttons fixed on the screen */
+  padding-right: 260px;
+  margin-right: 60px;
 
 }
 
 .dayHeaderGroup > .rightButton {
-  position: fixed;  /* Position the buttons fixed on the screen */
-  padding-left: 240px;
-  margin-left: 40px;
+  position: absolute;  /* Position the buttons fixed on the screen */
+  padding-left: 260px;
+  margin-left: 60px;
 }
 
 .rightIcon:hover {
