@@ -32,7 +32,9 @@ const TextContent: React.FC = () => {
   
   const handlePreviousNextDay = (dayChoice: string) => {
     // Preprocess the input date string to remove the ordinal indicator
-    const removedOrdinalDate = dayText.replace(/\b(\d+)(st|nd|rd|th)\b/g, '$1');
+    let removedOrdinalDate = dayText.replace(/\b(\d+)(st|nd|rd|th)\b/g, '$1');
+    // To ensure Feb 29 loads, dayJS has to believe that we are in a gap year, hence the code below
+    removedOrdinalDate = removedOrdinalDate + ' 2024'
 
     // Parse the preprocessed date string using the custom format
     let parsedDate: any;
